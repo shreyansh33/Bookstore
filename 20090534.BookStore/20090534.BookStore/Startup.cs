@@ -16,25 +16,37 @@ namespace _20090534.BookStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method  called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            // create a new middleware we can use app and to create a custom middle ware lets use use method
+            
+            //  n no of middleware can be inserted
+            app.UseRouting(); // this is also a middleware // if we comment this line we get error  // before using endpoint we must use routing in the application 
+            
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints => // this is also a middleware 
             {
-                endpoints.MapGet("/", async context =>
+
+                /*endpoints.Map("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                    
+                    
+                        await context.Response.WriteAsync("Hello from dev");
+                    
+             
+                });*/
+                endpoints.MapDefaultControllerRoute(); // this gets the message from index method of gome controller
             });
+           
         }
+
     }
 }
