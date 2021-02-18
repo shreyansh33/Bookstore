@@ -27,8 +27,10 @@ namespace _20090534.BookStore
                 app.UseDeveloperExceptionPage();
             }
             // create a new middleware we can use app and to create a custom middle ware lets use use method
-            
+
             //  n no of middleware can be inserted
+
+            app.UseStaticFiles();  
             app.UseRouting(); // this is also a middleware // if we comment this line we get error  // before using endpoint we must use routing in the application 
             
 
